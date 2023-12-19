@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from functools import partial
 import random
+import math
 
 class GeneticKnapsackSolver:
     def __init__(self, weights, values, max_weight, population_size, mutation_probability, generations, unbounded=False):
@@ -181,6 +182,8 @@ class KnapsackSolverGUI:
             weights = [int(weight) for weight in weights_str.split(',')]
             values = [int(value) for value in values_str.split(',')]
 
+            sum_of_values = sum(values)
+
             max_weight = int(self.max_weight_entry.get())
             population_size = int(self.population_entry.get())
             mutation_probability = float(self.mutation_entry.get())
@@ -193,7 +196,7 @@ class KnapsackSolverGUI:
             solver.evolve_population()
             best_chromosome, total_weight, total_value = solver.get_best_solution()
 
-            result_str = f"The best solution:\nChromosome: {best_chromosome}\nWeight: {total_weight}\nValue: {total_value}"
+            result_str = f"The best solution:\nChromosome: {best_chromosome}\nWeight: {total_weight}\nValue: {total_value}\nAccurecy: {math.floor((total_value/sum_of_values)*100)}%"
             messagebox.showinfo("Knapsack Solver Result", result_str)
         except ValueError:
             messagebox.showerror("Error", "Invalid input. Please enter valid numerical values.")
