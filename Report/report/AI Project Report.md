@@ -65,6 +65,9 @@ The `GeneticKnapsackSolver` class provides an implementation of a genetic algori
 
 ![[GAKnapsackFC.jpg]]
 
+#### Use case diagram
+
+![[useCase.jpg]]
 
 ### Testing 
 
